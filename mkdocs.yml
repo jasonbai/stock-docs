@@ -32,12 +32,12 @@ plugins:
     type: date
 - minify:
     minify_html: true
-repo_name: stockdata
-repo_url: https://github.com/your-username/stockdata
+repo_name: stock-docs
+repo_url: https://github.com/jasonbai/stock-docs
 site_author: Jason
 site_description: 自动更新的股票数据复盘报告网站
 site_name: 股票数据复盘报告
-site_url: https://your-username.github.io/stockdata/
+site_url: https://jasonbai.github.io/stock-docs/
 theme:
   features:
   - navigation.instant
