@@ -4,10 +4,15 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - 'reports/**'
-      - 'docs_site/**'
+      - '**'  # 监听所有文件变化，因为这是独立仓库
   # 允许手动触发工作流
   workflow_dispatch:
+
+# 添加权限设置
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -31,23 +36,25 @@ jobs:
       
       - name: 创建必要的目录结构
         run: |
-          mkdir -p docs_site/docs/reports/daily
-          mkdir -p docs_site/docs/reports/weekly
-          mkdir -p docs_site/docs/reports/monthly
-          mkdir -p docs_site/docs/reports/other
+          mkdir -p docs/reports/daily
+          mkdir -p docs/reports/weekly
+          mkdir -p docs/reports/monthly
+          mkdir -p docs/reports/other
       
       - name: 生成导航
-        run: |
-          cd docs_site
-          python scripts/generate_nav.py
+        run: python scripts/generate_nav.py
       
       - name: 构建文档
-        run: |
-          cd docs_site
-          mkdocs build
-      
-      - name: 部署到 GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        run: mkdocs build
+
+      - name: 设置 Pages
+        uses: actions/configure-pages@v2
+
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@v1
         with:
-          folder: docs_site/site
-          branch: gh-pages 
+          path: site
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1 
