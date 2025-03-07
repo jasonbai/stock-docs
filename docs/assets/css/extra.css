@@ -1,0 +1,66 @@
+/* 自定义样式 */
+
+/* 报告内容样式 */
+.md-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 表格样式 */
+.md-typeset table:not([class]) {
+  font-size: 0.9rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+/* 代码块样式 */
+.md-typeset pre > code {
+  font-size: 0.85rem;
+}
+
+/* 图表容器 */
+.chart-container {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* 强调内容 */
+.highlight-box {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--md-primary-fg-color);
+  background-color: var(--md-primary-fg-color--light);
+  color: var(--md-primary-bg-color);
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .md-typeset a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+  
+  .md-header, .md-tabs, .md-sidebar {
+    display: none;
+  }
+  
+  .md-content {
+    margin: 0;
+    padding: 0;
+  }
+} 
